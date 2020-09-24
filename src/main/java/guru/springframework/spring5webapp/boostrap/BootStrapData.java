@@ -26,7 +26,7 @@ public class BootStrapData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Publisher wizardsOfTheCoast = new Publisher();
-        wizardsOfTheCoast.setName("wizards of the Coast");
+        wizardsOfTheCoast.setName("Wizards of the Coast");
         wizardsOfTheCoast.setCity("Los Angeles");
         wizardsOfTheCoast.setCity("US-CA");
 
@@ -57,8 +57,6 @@ public class BootStrapData implements CommandLineRunner {
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Books " + bookRepository.count());
         System.out.println("Publsher Number of books: " + wizardsOfTheCoast.getBooks().size());
-
-
 
     }
 }
