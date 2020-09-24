@@ -25,10 +25,21 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        Publisher wizardsOfTheCoast = new Publisher();
+        wizardsOfTheCoast.setName("wizards of the Coast");
+        wizardsOfTheCoast.setCity("Los Angeles");
+        wizardsOfTheCoast.setCity("US-CA");
+
+        publisherRepository.save(wizardsOfTheCoast);
+
+        System.out.println("Publisher Count " + publisherRepository.count());
+
         Author jace = new Author("Jace", "Beleren");
         Book blueMana = new Book("Cast Blue Mana Spells", "123456");
         jace.getBooks().add(blueMana);
         blueMana.getAuthors().add(jace);
+
+        blueMana.setPublisher(wizardsOfTheCoast);
 
         authorRepository.save(jace);
         bookRepository.save(blueMana);
@@ -38,20 +49,16 @@ public class BootStrapData implements CommandLineRunner {
         liliana.getBooks().add(blackMana);
         blackMana.getAuthors().add(liliana);
 
+        blackMana.setPublisher(wizardsOfTheCoast);
+
         authorRepository.save(liliana);
         bookRepository.save(blackMana);
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Books " + bookRepository.count());
+        System.out.println("Publsher Number of books: " + wizardsOfTheCoast.getBooks().size());
 
-        Publisher wizardsOfTheCoast = new Publisher();
-        wizardsOfTheCoast.setName("wizards of the Coast");
-        wizardsOfTheCoast.setCity("Los Angeles");
-        wizardsOfTheCoast.setCity("US-CA");
 
-        publisherRepository.save(wizardsOfTheCoast);
-
-        System.out.println("Publisher Count " + publisherRepository.count());
 
     }
 }
